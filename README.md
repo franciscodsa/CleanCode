@@ -3,7 +3,7 @@
 A continuación se corregirá el cuarto ejercicio de la primera evaluación de programación en el cual se pedía realizar un menú de opciones que permite al usuario elegir entre tres operaciones matemáticas: suma, multiplicación y conteo de números.
 
 
-### Código realizado para responder el dia del examen
+### Código realizado el día del examen
 ```
 import java.util.Scanner;
 
@@ -68,7 +68,7 @@ public class Ejercicio04 {
     }
 }
 ```
-### Codigo corregido usando las claves a seguir para el CleanCode
+### Código corregido usando las claves a seguir para el CleanCode
 
 En el siguiente código se podrá observar que, a diferencia de la versión previa, se hace uso de:
 
@@ -80,7 +80,7 @@ En el siguiente código se podrá observar que, a diferencia de la versión prev
 
 4. **_Evita la repetición:_** en lugar de repetir el mismo código varias veces, se utilizan bucles y funciones para reducir la cantidad de código y hacerlo más legible.
 
-5. **_Modularidad:_** el código está organizado en métodos y clases, lo que hace que sea más fácil de leer, entender y mantener.
+5. **_Modularidad:_** el código está organizado en métodos, lo que hace que sea más fácil de leer, entender y mantener.
 
 6. **_Uso de constantes:_** se utilizan constantes para representar las opciones del menú, lo que hace que el código sea más legible y evita errores tipográficos.
 ``` 
@@ -223,14 +223,167 @@ public class CorreccionEjercicio04 {
             System.out.print("Introduce el número: ");
             numero = scanner.nextInt();
             scanner.nextLine(); // Evitar el salto de línea
-            if (numero != 0) {
-                cuenta++;
-            }
+            cuenta = (numero != 0) ? cuenta + 1 : cuenta;
         }
 
         System.out.println("Has introducido " + cuenta + " números.");
     }
 }
 
+```
 
- ```
+
+ Ahora se corregirá el primer ejercicio de la segunda evaluación de programación. En este era necesario crear una matriz de números aleatorios y luego generar una matriz de caracteres utilizando los números de la matriz anterior. Los números pares se representaban con la letra 'p' y los impares con la
+letra 'i'.
+
+### ### Código realizado el día del examen
+
+```
+/**
+ * @author Francisco
+ * @version 1
+ */
+public class Ejercicio01 {
+    public static void main(String[] args) {
+        int [][] arrNum = new int[5][5];
+
+        for (int i = 0; i <5 ; i++) {
+            for (int j = 0; j <5 ; j++) {
+                arrNum [i][j]= (int)(Math.random()*10);
+            }
+        }
+
+        for (int i = 0; i <5 ; i++) {
+            for (int j = 0; j <5 ; j++) {
+                System.out.print(arrNum [i][j] + "  ");
+            }
+            System.out.println();
+        }
+
+        System.out.println();
+
+        char [][] arrChar = new char[5][5];
+
+        for (int i = 0; i <5 ; i++) {
+
+            for (int j = 0; j <5 ; j++) {
+                if (arrNum[i][j] % 2 == 0){
+                    arrChar[i][j] = 'p';
+                }else{
+                    arrChar[i][j] = 'i';
+                }
+            }
+
+        }
+
+        for (int i = 0; i <5 ; i++) {
+            for (int j = 0; j <5 ; j++) {
+                System.out.print(arrChar [i][j] + "  ");
+            }
+            System.out.println();
+        }
+
+
+
+
+    }
+}
+
+```
+### Código corregido usando las claves a seguir para el CleanCode
+Los cambios realizados fueron:
+
+1. Se agregaron comentarios para explicar el propósito de cada método y para documentar la versión y el autor del programa.
+2. Se extrajeron los bucles de impresión del arreglo a dos métodos separados para reducir la duplicación de código.
+3. Se utilizó una constante TAMAÑO_ARRAY para indicar el tamaño del array, lo que hace que sea fácil de cambiar en el futuro si es necesario.
+4. Se utilizó el operador ternario ```? :``` para simplificar la lógica de conversión de números pares e impares a caracteres 'p' e 'i'.
+5. Se reestructuró el código a una manera modular para facilitar su lectura y mantenimiento.
+```
+/**
+ * Esta clase contiene un programa que crea una matriz de números aleatorios y luego genera una matriz de caracteres
+ * utilizando los números de la matriz anterior. Los números pares se representan con la letra 'p' y los impares con la
+ * letra 'i'.
+ * @author Francisco
+ * @version 2
+ */
+public class CorreccionEjercicio01 {
+    private static final int TAMAÑO_ARRAY = 5;
+
+    /**
+     * El método main es el punto de entrada del programa.
+     *
+     * @param args Los argumentos de la línea de comandos, no se usan en este programa.
+     */
+    public static void main(String[] args) {
+        int[][] intArray = new int[TAMAÑO_ARRAY][TAMAÑO_ARRAY];
+        char[][] charArray = new char[TAMAÑO_ARRAY][TAMAÑO_ARRAY];
+
+        //Llena un array de números aleatorios y lo imprime
+        llenarArray(intArray);
+        imprimirArray(intArray);
+        //Genera un array de caracteres a partir del array de enteros
+        generarArray(intArray, charArray);
+        imprimirArray(charArray);
+    }
+
+    /**
+     * Este método llena una matriz de números aleatorios.
+     *
+     * @param array La matriz a llenar con números aleatorios.
+     */
+    private static void llenarArray(int[][] array) {
+        for (int i = 0; i < TAMAÑO_ARRAY ; i++) {
+            for (int j = 0; j < TAMAÑO_ARRAY ; j++) {
+                array[i][j] = (int)(Math.random() * 10);
+            }
+        }
+    }
+
+    /**
+     * Este método genera una matriz de caracteres a partir de una matriz de números. Los números pares se representan
+     * con la letra 'p' y los impares con la letra 'i'.
+     *
+     * @param intArray La matriz de números a utilizar para generar la matriz de caracteres.
+     * @param charArray La matriz de caracteres a generar.
+     */
+    private static void generarArray(int[][] intArray, char[][] charArray) {
+        for (int i = 0; i < TAMAÑO_ARRAY ; i++) {
+            for (int j = 0; j < TAMAÑO_ARRAY ; j++) {
+                //if-else simplificado y legible haciendo uso de expresión ternaria
+                charArray[i][j] = (intArray[i][j] % 2 == 0) ? 'p' : 'i';
+            }
+        }
+    }
+
+    /**
+     * Este método imprime un array de caracteres en la consola.
+     *
+     * @param array La matriz a imprimir.
+     */
+    private static void imprimirArray(char[][] array) {
+        for (int i = 0; i < TAMAÑO_ARRAY ; i++) {
+            for (int j = 0; j < TAMAÑO_ARRAY ; j++) {
+                System.out.print(array[i][j] + "  ");
+            }
+            System.out.println();
+        }
+    }
+
+    /**
+     * Este método imprime un array de números en la consola.
+     *
+     * @param array La matriz a imprimir.
+     */
+    private static void imprimirArray(int[][] array) {
+        for (int i = 0; i < TAMAÑO_ARRAY ; i++) {
+            for (int j = 0; j < TAMAÑO_ARRAY ; j++) {
+                System.out.print(array[i][j] + "  ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+}
+
+
+```
