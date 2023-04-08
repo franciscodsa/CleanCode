@@ -236,7 +236,7 @@ public class CorreccionEjercicio04 {
  Ahora se corregirá el primer ejercicio de la segunda evaluación de programación. En este era necesario crear una matriz de números aleatorios y luego generar una matriz de caracteres utilizando los números de la matriz anterior. Los números pares se representaban con la letra 'p' y los impares con la
 letra 'i'.
 
-### ### Código realizado el día del examen
+### Código realizado el día del examen
 
 ```
 /**
