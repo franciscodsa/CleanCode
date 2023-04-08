@@ -176,18 +176,18 @@ public class CorreccionEjercicio04 {
      */
     private static void ejecutarOpcionSumar() {
         System.out.print("¿Cuántos números vamos a sumar? ");
-        int n = scanner.nextInt();
+        int cantidad = scanner.nextInt();
         scanner.nextLine(); // Evitar el salto de línea
 
-        int sum = 0;
-        for (int i = 1; i <= n; i++) {
+        int suma = 0;
+        for (int i = 1; i <= cantidad; i++) {
             System.out.print("Introduce el número " + i + ": ");
-            int number = scanner.nextInt();
+            int numero = scanner.nextInt();
             scanner.nextLine(); // Evitar el salto de línea
-            sum += number;
+            suma += numero;
         }
 
-        System.out.println("La suma de los números es: " + sum);
+        System.out.println("La suma de los números es: " + suma);
 
         System.out.println(); // Dejar una línea en blanco para que sea más legible
     }
@@ -197,39 +197,40 @@ public class CorreccionEjercicio04 {
      */
     private static void ejecutarOpcionMultiplicar() {
         System.out.print("¿Cuántos números vamos a multiplicar? ");
-        int n = scanner.nextInt();
+        int cantidad = scanner.nextInt();
         scanner.nextLine(); // Evitar el salto de línea
 
-        int product = 1;
-        for (int i = 1; i <= n; i++) {
+        int producto = 1;
+        for (int i = 1; i <= cantidad; i++) {
             System.out.print("Introduce el número " + i + ": ");
-            int number = scanner.nextInt();
+            int numero = scanner.nextInt();
             scanner.nextLine(); // Evitar el salto de línea
-            product *= number;
+            producto *= numero;
         }
 
-        System.out.println("El producto de los números es: " + product);
+        System.out.println("El producto de los números es: " + producto);
         System.out.println(); // Dejar una línea en blanco para que sea más legible
     }
     /**
      * Pide al usuario una serie de números y los cuenta.
      */
     private static void ejecutarOpcionContar() {
-        int count = 0;
-        int number = 1;
+        int cuenta = 0;
+        int numero = 1;
 
         System.out.println("Introduce números (0 para terminar):");
-        while (number != 0) {
+        while (numero != 0) {
             System.out.print("Introduce el número: ");
-            number = scanner.nextInt();
+            numero = scanner.nextInt();
             scanner.nextLine(); // Evitar el salto de línea
-            if (number != 0) {
-                count++;
+            if (numero != 0) {
+                cuenta++;
             }
         }
 
-        System.out.println("Has introducido " + count + " números.");
+        System.out.println("Has introducido " + cuenta + " números.");
     }
 }
+
 
  ```
